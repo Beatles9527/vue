@@ -17,6 +17,7 @@ require('./css/normal.css')
 // 4.依赖less文件
 require('./css/special.less')
 document.writeln('<h2>测试lessloader</h2>')
+document.writeln('<button>按钮！！！</button>')
 
 // 5.使用Vue进行开发
 import Vue from 'vue';
@@ -29,3 +30,4 @@ new Vue({
     App
   }
 })
+

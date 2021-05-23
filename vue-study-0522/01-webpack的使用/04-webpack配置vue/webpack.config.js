@@ -1,4 +1,5 @@
 const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -7,6 +8,9 @@ module.exports = {
     filename: 'main.js',
     publicPath: 'dist/bundle.js/'
   },
+  plugins: [
+    new VueLoaderPlugin()
+  ],
   module: {
     rules: [
       {
@@ -49,7 +53,19 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
+      },
+      {
+        test: /\.vue$/,
+        use: ['vue-loader']
       }
     ],
+  },
+  resolve: {
+    // 用于省略导入的组件的文件的后缀！！！！！！！！！！！！！！！！
+    // extensions: ['.js', '.css', '.vue'],
+    // 别名
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
   },
 }

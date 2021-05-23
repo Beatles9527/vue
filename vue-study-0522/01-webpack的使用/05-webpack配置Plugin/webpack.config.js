@@ -1,17 +1,24 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack = require('webpack')
+const htmlWebpackPlugin = require('html-webpack-plugin')
+const uglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist/bundle.js'),
     filename: 'main.js',
-    publicPath: 'dist/bundle.js/'
+    // 用于指定绝对路径
+    // publicPath: 'dist/bundle.js/'
   },
   plugins: [
     new VueLoaderPlugin(),
-    new webpack.BannerPlugin('最终版权归 wantao 所有！')
+    new webpack.BannerPlugin('最终版权归 wantao 所有！'),
+    new htmlWebpackPlugin({
+      template: 'index.html'
+    }),
+    new uglifyjsWebpackPlugin(),
   ],
   module: {
     rules: [
@@ -69,5 +76,9 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     }
+  },
+  devServer: {
+    contentBase: './dist',
+    inline: true
   },
 }
