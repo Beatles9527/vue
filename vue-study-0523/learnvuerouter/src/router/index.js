@@ -11,6 +11,7 @@ const About = () => import('../components/About')
 const User = () => import('../components/User')
 const HomeNews = () => import('../components/HomeNews')
 const HomeMessage = () => import('../components/HomeMessage')
+const Profile = () => import('../components/profile')
 
 // 1.通过Vue.use(插件),安装插件
 Vue.use(VueRouter)
@@ -25,6 +26,9 @@ const routes = [
   {
     path: '/home',
     component: Home,
+    meta: {
+      title: '首页'
+    },
     children: [
       {
         path: 'news',
@@ -38,11 +42,28 @@ const routes = [
   },
   {
     path: '/about',
-    component: About
+    component: About,
+    meta: {
+      title: '关于'
+    },
+    beforeEnter: (to, from, next) => {
+      console.log('about beforeEnter');
+      next()
+    }
   },
   {
     path: '/user/:userId',
-    component: User
+    component: User,
+    meta: {
+      title: '用户'
+    },
+  },
+  {
+    path: '/profile',
+    component: Profile,
+    meta: {
+      title: '档案'
+    },
   }
 ]
 const router = new VueRouter({
@@ -50,6 +71,20 @@ const router = new VueRouter({
   routes,
   mode: "history",
   linkActiveClass: 'active'
+})
+
+// 前置守卫(guard)
+router.beforeEach((to, from, next) => {
+  // 从from跳转到to
+  window.document.title = to.matched[0].meta.title
+  // console.log(to);
+  // console.log('++++++++++');
+  next()
+})
+
+// 后置钩子(hook)
+router.afterEach((to, from) => {
+  // console.log('----------');
 })
 
 // 3.将router对象传入到Vue实例

@@ -39,3 +39,9 @@ J
 learnvuerouter/src/App.vue,9\9\99e11426621e23aa4386f3d1a61fce8327cf250c
 V
 &learnvuerouter/src/components/User.vue,7\3\73e27594a342c8c0b555720618bd957df3c69e45
+]
+-learnvuerouter/src/components/HomeMessage.vue,2\4\2480db6c37466061090a799dd84478c6e6affb17
+N
+learnvuerouter/dist/index.html,5\f\5fb2f6b198a4bb8b69506d42ee929b48ea28b034
+Z
+*learnvuerouter/src/components/HomeNews.vue,8\d\8d14ac4fb3f47438a364d5100dc3bc49d6b46aaa

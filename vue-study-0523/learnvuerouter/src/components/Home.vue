@@ -10,7 +10,22 @@
 
 <script>
 export default {
-  name: "Home"
+  name: "Home",
+  data() {
+    return {
+      message: '你好啊'
+    }
+  },
+  // created() {
+  //   console.log('created');
+  //   document.title = '首页'
+  // },
+  // mounted() {
+  //   console.log('mounted');
+  // },
+  // updated() {
+  //   console.log('updated');
+  // }
 }
 </script>
 
